@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>E-commerce clone</title>
+  <link rel="stylesheet" href="Ecommerce.css">
+</head>
+<body>
+  <div class="wrapper">
+      <div class="Header">
+      <h2>CSX <del>Clone</del></h2>
+      <input type="text" id="Search" onkeyup="show_data_with_filter()" placeholder="Search for product..." title="Type in a name">
+
+      <select type="text" id="category" onchange="show_data_with_filter()">
+        <option value=""><b><em>Category</em></b></option>
+        <option value="Men's Clothing">Men's Clothing</option>
+        <option value="Women's Clothing">Women's Clothing</option>
+        <option value="Jewelery">Jewelery</option>
+        <option value="Electronics">Electronics</option>
+      </select>
+
+      <select type="text" id="pricerange" onchange="show_data_with_filter()">
+        <option value="sort"><b><em>sort by price</em></b></option>
+        <option value="High">High to low</option>
+        <option value="Low">Low to high</option>
+      </select> 
+      
+    </div>
+    <div id="display">Loding...<p></p></div>
+  </div>
+<script src="./Ecommerce.js" ></script>
+</body>
+</html>
