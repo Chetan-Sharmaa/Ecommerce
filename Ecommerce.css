@@ -1,0 +1,78 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: whitesmoke;
+}
+.Header {
+  width: 100%;
+  height: 80px;
+  background-color: #f5b574;
+  justify-content: space-between;
+}
+
+#display {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+#Search {
+  border-radius: 2px;
+  border-color: white;
+  background-color: gray;
+  color: white;
+}
+
+#myJson > div {
+  flex-basis: 25%;
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 1px solid;
+}
+.box {
+  width: 22%;
+  margin: 22px 27px;
+  border: 8px solid white;
+  box-shadow: 8px 8px #f5b574;
+  border-radius: 10px;
+  background-color: white;
+  padding: 15px;
+}
+.box img {
+  width: 200px;
+  display: block;
+  margin: auto;
+}
+.addcart {
+  padding: 5px 10px;
+  background-color: darkorange;
+  border: 1px solid white;
+  color: black;
+  margin-left: 30%;
+}
+
+::placeholder {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: gray;
+}
+
+/* const buttonsArray = document.getElementsByClassName("addcart");
+
+  for (let i = 0; i < buttonsArray.length; i++) {
+    buttonsArray[i].addEventListener("click", (buttonsArray) => {
+      console.log(buttonsArray);
+      clickAddToCart;
+    });
+  }
+}
+
+function clickAddToCart(num) {
+  console.log(num);
+}
+
+
+function printMyname() */

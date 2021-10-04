@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add to Cart</title>
+  <style>
+    
+    .items{
+      width: 22%;
+  margin: 22px 27px;
+  border: 8px solid white;
+  box-shadow: 8px black;
+  border-radius: 10px;
+  background-color: gray;
+  padding: 15px;
+    }
+    .billing{
+      width: 50%;
+      height: auto;
+      background-color: #F98715;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      text-align: left;
+    }
+    .billing h4 {
+      margin-left: 5px;
+    }
+    #Qwantity{
+      background-color: none;
+      border: 2px solid #F98715;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <a href="./Ecommerce.html">Home Page</a>
+
+  <div id="list">
+  
+  </div>
+  <center><div class="billing">
+    <h4>Subtotal: <p id="total"></p></h4>
+  </div></center>
+</body>
+<script>
+    var defValue=0;
+    var url = "https://fakestoreapi.com/products";
+    var fetching = fetch(url)
+      .then((response) => {
+        return response.json();
+      }).then((proForBill) => {
+
+        for(i=1;i<21;i++){
+        var gett = localStorage.getItem(i)
+        if(gett != ""){
+          if(gett == i){
+            var listedItem = proForBill[gett-1]
+            // console.log(listedItem)
+            
+        document.getElementById('list').innerHTML +=`<div class="items" id="divRem${i}"><img src="${listedItem.image}" height="150" width="200"/><h3>${listedItem.title}</h3><input id="Qwantity${i}" type="number" placeholder="no. of item" onchange="qwantities(${listedItem.price},${i})" value="1"><p id="defPrice${i}"><b>Price</b>${listedItem.price}</p><button type="button" onclick="remove(${listedItem.id},${i},${listedItem.price})" >Remove</button>
+        </div>`
+          defValue += listedItem.price; 
+          document.getElementById('total').innerHTML = defValue;
+          
+            }
+          }
+        }
+         
+      });
+       function remove(del,rem,minus){
+  
+            localStorage.removeItem(del)
+            // location.reload();
+            document.getElementById(`divRem${rem}`).remove();
+             defValue = defValue-minus;
+             document.getElementById('total').innerHTML = defValue;
+
+          }
+          
+
+          function qwantities(price,index){
+            var qwants = document.getElementById(`Qwantity${index}`).value;
+            console.log(qwants);
+
+            var total = (qwants*price);
+            console.log(total);
+
+            document.getElementById(`defPrice${index}`).innerHTML=`<b>Price</b> ${total}`
+            // totalArr[0].push(defValue)
+            // totalArr.push(total);
+            // // console.log(totalArr);
+            // var sum =  totalArr.reduce((a, b) => a + b);
+
+            // var subtotal = "";
+            // subtotal = sTotal + subtotal;
+            // // console.log(subtotal);
+            document.getElementById('total').innerHTML = defValue;
+            
+          }
+</script>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Details</title>
+  <style>
+    .btn a{
+      text-decoration: none;
+    }
+
+  .wrapper{
+  width: 50%;
+  display: block;
+  margin: auto;
+  border: 8px solid white;
+  box-shadow: 8px black;
+  border-radius: 10px;
+  background-color: white;
+  padding: 15px;
+  color: gray;
+}
+.addcart{
+  padding: 5px 10px;
+  background-color: darkorange;
+  border: 1px solid white;
+  color: black;
+  margin-left: 30%;
+}
+  </style>
+</head>
+<body>
+  <button class="btn"><a href="./Ecommerce.html">Home Page</a></button>
+
+  <div class="wrapper">
+    <p id="img">Img will appper here!</p>
+    <p id="title">Details Loading...</p>
+    <p id="cate"></p>
+    <p id="price"></p>
+    <p id="rating"></p>
+    <p id="description"></p>
+  </div>
+<script>
+var link = window.location.href
+
+var idOfPro = parseInt(link.replace("file:///home/zws/Documents/chetan-work/task7Ecommerce/item.html?id=",""))
+
+console.log(idOfPro);
+console.log(typeof(idOfPro));
+
+
+
+
+    var url = "https://fakestoreapi.com/products";
+    var fetching = fetch(url)
+  .then((response) => {
+    return response.json();
+  })
+  .then((detailsOfProduct) => {
+
+   var product_num = detailsOfProduct[idOfPro-1];
+    console.log(product_num);
+
+    
+
+    var img = `<img src="${product_num.image}" height="150" width="200"/>`
+    document.getElementById('img').innerHTML=img;
+    document.getElementById('title').innerHTML=product_num.title;
+    document.getElementById('cate').innerHTML=product_num.category;
+    document.getElementById('price').innerHTML=product_num.price;
+    document.getElementById('rating').innerHTML=product_num.rating.rate;
+    document.getElementById('description').innerHTML=product_num.description;
+   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // var url_string = window.location;
+  // var url = new URL(url_string);
+  // var index = url.searchParams.get("index");
+  
+  // var image = url.searchParams.get("image");
+
+  
+  
+  // var products = JSON.parse(localStorage.getItem('products'))[index]
+  // console.log("product",products);
+
+  // var img = `<img src="${products.image}" height="150" width="200"/>`
+  // document.getElementById("img").innerHTML=img;
+ 
+  // var title = `<p><em><b>${products.title}</b></em></p>`
+  // document.getElementById("title").innerHTML=title;
+
+  // var category = `<p><b>Category:</b> ${products.category}</p>`
+  // document.getElementById('cate').innerHTML=category;
+
+  // var price = `<p><b>Rate:</b> $ ${products.price} <s>$ ${products.price+25}</s></p>`
+  // document.getElementById("price").innerHTML=price;
+  
+  // var rating = `<p><b>Rating:</b> ${products.rating.rate} review by ${products.rating.count} customers.`
+  //   document.getElementById("rating").innerHTML=rating;
+
+  // var description = `<p><b>Description:</b> ${products.description}</p>`
+  // document.getElementById('description').innerHTML=description;
+
+  
+
+
+</script>
+</body>
+</html>
